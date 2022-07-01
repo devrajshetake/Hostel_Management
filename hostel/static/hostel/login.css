@@ -1,0 +1,15 @@
+.content-section{
+    border-radius: 2px;
+	font-size: 13px;
+	border: 0.5vh rgb(197, 60, 60) solid;
+	border-radius: 20px;
+	padding: 30px;	
+	/* position: relative; */
+    width: 400px;
+    margin-top: 150px;
+    margin-left: 450px;
+    background-color: beige;
+    }
+    body{
+        background-color: rgb(76, 117, 103);
+    }

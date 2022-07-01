@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:500,700&display=swap" rel="stylesheet">
+    <title>Document</title>
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+
+.transition, p, ul li i:before, ul li i:after {
+  transition: all 0.25s ease-in-out;
+}
+
+.flipIn, h1, ul li {
+  animation: flipdown 0.5s ease both;
+}
+
+.no-select, h2 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {  
+  width: 100%;
+  height: 100%;
+  perspective: 900;
+  overflow-y: scroll;
+  background-color: #E5CB9F;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  color: #cf4f4f;
+}
+
+body {
+  min-height: 0;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin: 90px 0;
+  transform: translate(-50%, 0);
+  box-shadow: 0 10px 0 0 #68a7ad inset;
+  background-color: 68a7ad;
+  max-width: 60%;
+  padding: 30px;
+}
+@media (max-width: 550px) {
+  body {
+    box-sizing: border-box;
+    transform: translate(0, 0);
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    left: 0;
+  }
+}
+
+.rules h1, h2 {
+  color:#68a7ad;
+}
+
+.rules h1 {
+  text-transform: uppercase;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 40px;
+  line-height: 42px;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+
+.rules h2 {
+  font-size: 30px;
+  line-height: 34px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  display: block;
+  margin: 0;
+  cursor: pointer;
+}
+.rules p {
+  color: black;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  max-height: 1200px;
+  opacity: 1;
+  transform: translate(0, 0);
+  margin-top: 14px;
+  z-index: 2;
+}
+
+.rules ul {
+  list-style: none;
+  perspective: 900;
+  padding: 0;
+  margin: 0;
+}
+.rules ul li {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 4px;
+  padding-top: 18px;
+  border-top: 1px solid #68a7ad;
+}
+.rules ul li:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+.rules ul li:nth-of-type(2) {
+  animation-delay: 0.75s;
+}
+.rules ul li:nth-of-type(3) {
+  animation-delay: 1s;
+}
+.rules ul li:last-of-type {
+  padding-bottom: 0;
+}
+.rules ul li i {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+  right: 0;
+}
+.rules ul li i:before, ul li i:after {
+  content: "";
+  position: absolute;
+  background-color: #68a7ad;
+  width: 3px;
+  height: 9px;
+}
+.rules ul li i:before {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+.rules ul li i:after {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+.rules ul li input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+}
+.rules ul li input[type=checkbox]:checked ~ p {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translate(0, 50%);
+}
+.rules ul li input[type=checkbox]:checked ~ i:before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+.rules ul li input[type=checkbox]:checked ~ i:after {
+  transform: translate(-2px, 0) rotate(-45deg);
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+
+.ewlink {
+  text-decoration: none;
+  color:#68a7ad;
+}
+    </style>
+</head>
+<body>
+    <div class="rules">
+        <br>
+        <center>
+          <h1>
+            <b>
+              Rulebooks and Guidelines
+            </b>
+          </h1>
+        </center>
+        <br>
+        <p>
+          We believe everyone should be welcomed, every point of view should be given a chance. We welcome debate, as long as it is done peacefully and respectfully; any point of view is welcomed. Respect is imperative, everyone is equal here. Discussion must be kept civil, feel free to express yourself as long as you do it calmly.
+          
+          <br>
+          <br> 
+          
+        Upon registration to 
+          
+          “<a href="www.nasclub.co" class="ewlink"><i>www.nasclub.co</i></a>” 
+          
+          you agree to following these rules/guidelines. Staff can and will use their own judgement when deciding on which warning/punishment is best suited to any given user.
+          
+          <br>
+          <br>
+          
+          We reserve the right to change or modify these rules at any given time with or without reason. We also reserve the right to remove you from our website without warning and/or reason, however, a reason will generally be provided and you may ask for one if you are concerned.
+        </p>
+        <ul>
+          <li>
+            <input type="checkbox" checked>
+            
+            <i></i>
+            <h2>General Rulebooks</h2>
+            <p>
+              You are not allowed to;<br> • Continually and aggressively insult or stalk other users.
+              <br> • Post personally identifiable information (i.e. name, address, email, phone number, etc.), without prior consent.
+              <br> • Like or post boost.
+              <br> • Derail a thread's topic.
+              <br> • Post links to inappropriate sites.
+              <br> • Post spam (i.e. +1, rickrolls, repeated content) or Re-post Closed, Modified, Deleted Content.
+              <br> • Triple post.
+              <br> • Abuse glitches
+            </p>
+          </li>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2>Forum Guidelines</h2>
+            <p><b>I. Arguments with Moderators<br></b>
+        You are not allowed to openly argue with a moderator about punishments. Contact the Moderator via a private message. These situations should be dealt with privately.
+        <br>
+              
+        <br>
+        <b>II. Forum Accounts<br></b>
+        You are not allowed to share your account. Forum accounts are intended for the use by one person. You are not allowed to create backup accounts for the purpose of posting in our debate forums, in the event of your main being banned.
+        <br>
+              
+        <br>
+        <b>III. Remain on Topic<br></b>
+        Threads should remain on the topic that they are discussing, they should not be discussing other topics. A new thread should be made for a new discussion. Please do understand we are lenient upon this rule however if the topics gets majorly derailed we will take action.
+        <br>
+              
+        <br>
+        <b>IV. Inappropriate content<br></b>
+        Threads containing pornography, illegal content will be removed and the user banned. Racial, sexual, or any other form of discrimination is currently not tolerated. We are lenient depending upon the mannerism of discussion.
+        <br>
+              
+        <br>
+        <b>V. Flame or Provoke<br></b>
+        Do not continually and aggressively insult or flame other members of the forum. Similarly, do not post with the intention of provoking a reaction from fellow members. This includes encouraging flame wars.
+        <br>
+              
+        <br>
+        <b>V. Topic Setting<br></b>
+        The opening post of a thread sets the topic and the tone of the discussion. It should contain a member's opinions or questions with sufficient elaboration to establish a foundation for respectful discussion and debate. Images, links, quotations, etc., should be used to support a member's opinion, not to replace it.
+        <br>
+              
+        <br>
+        <b>VI. Topic Duplication<br></b>
+        Threads should not be posted in the wrong forum, or be duplicates of other threads and/or topics (creating multiple threads with fundamentally the same topic is not allowed, unless otherwise stated by a staff member).
+        <br>
+              
+        <br>
+        <b>VII. Private Messaging<br></b>
+        Publicly post or otherwise share PMs with other users unless you have the expressed permission of the sender to do so. Private Messages are intended to be just that - private.</p>
+          </li>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2>Chat Guidelines</h2>
+            <p><b>I. Arguments with Moderators<br></b>
+        You are not allowed to openly argue with a moderator about punishments. Contact the Moderator via a private message. These situations should be dealt with privately.
+        <br>
+              
+        <br>
+        <b>II. Doxing<br></b>
+        You are not allowed to post personally identifiable information (i.e. name, address, email, phone number, etc.), without prior consent. 
+        <br>
+              
+        <br>
+        <b>III. Spamming<br></b>
+        You are not allowed to post similar or the same messages repeatidly in Nasclub Chat. We're currently cracking down on spamming, doing so will result in a one month ban. 
+        <br>
+              
+        <br>
+        <b>IV. Inappropriate content<br></b>
+        You are not allowed to post links containing pornography, illegal content. Racial, sexual, or any other form of discrimination is currently not tolerated.
+        <br>
+          </li>
+        </ul>
+        </div>
+</body>
+</html>

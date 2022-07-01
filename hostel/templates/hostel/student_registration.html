@@ -1,0 +1,191 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'hostel/student_registration.css' %}">
+        <style>
+            body {
+           color: #68a7ad;
+           overflow-x: hidden;
+           height: 100%;
+           background-color: #68a7ad;
+    /* background-image: url("https://i.imgur.com/GMmCQHC.png"); */
+           background-repeat: no-repeat;
+           background-size: 100% 100%
+           
+            }
+            input:focus,
+    textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #68a7ad;
+    outline-width: 0;
+    font-weight: 400
+}
+
+.card {
+    padding: 30px 40px;
+    margin-top: auto;
+    background-color: white;
+    /* margin-bottom: 60px; */
+    border: none !important;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+    
+}
+input,
+textarea,
+button {
+    padding: 8px 15px;
+    border-radius: 5px !important;
+    margin: 5px 0px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: 18px !important;
+    font-weight: 300
+}
+.btn-block {
+    text-transform: uppercase;
+    font-size: 15px !important;
+    font-weight: 400;
+    height: 43px;
+    cursor: pointer;
+    border-radius: 5px;
+    color:black;
+    background-color: #68a7ad;
+}
+.btn-block:hover {
+    color: black !important;
+    background-color: #e5cb95;
+}
+#year
+{
+    height:43px;
+    padding: 8px 15px;
+    border-radius: 5px !important;
+    margin: 5px 0px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: 18px !important;
+    font-weight: 300
+}
+
+</style>
+    <title>Student Page</title>
+</head>
+<body>
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                <div class="card">
+                    <h1 class="text-center mb-4 heading">Student Details</h1>
+                    <form class="form-card"  method="POST" action="{% url 'student_save' %}"> <!--onsubmit="event.preventDefault()"-->
+                        {% csrf_token %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {{message}}
+                          </div>
+                        {% endfor %}
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Name<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Enter your name" onblur="validate(1)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Parent Name<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Enter parent name" onblur="validate(2)"> </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Branch<span class="text-danger"> *</span></label> <input type="text" id="branch" name="branch" placeholder="Enter your branch" onblur="validate(1)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Year<span class="text-danger"> *</span></label> <select name="year" id="year">
+                                <option value="FE">FE</option>
+                                <option value="SE">SE</option>
+                                <option value="TE">TE</option>
+                                <option value="BE">BE</option>
+                              </select>
+                              <!-- <input type="text" id="year" name="year" placeholder="Enter year" onblur="validate(2)">  -->
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Registration ID<span class="text-danger"> *</span></label> <input type="text" id="reg" name="reg" placeholder="Enter your Registration id number" onblur="validate(1)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Roll Number<span class="text-danger"> *</span></label> <input type="text" id="roll" name="roll" placeholder="Enter parent Roll number" onblur="validate(2)"> </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Date Of Birth<span class="text-danger"> *</span></label> <input type="date" id="dob" name="dob" placeholder="Enter your DOB" onblur="validate(3)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Address<span class="text-danger"> *</span></label> <input type="text" id="mob" name="mob" placeholder="Enter Address" onblur="validate(4)"> </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Phone Number<span class="text-danger"> *</span></label> <input type="tel" id="mob1" name="mob1" placeholder="Enter student phone number" onblur="validate(5)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Parent Phone Number<span class="text-danger"> *</span></label> <input type="tel" id="mob2" name="mob2" placeholder="Enter parent phone number" onblur="validate(6)"> </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Email<span class="text-danger"> *</span></label> <input type="email" id="email1" name="email1" placeholder="Enter Student Email" onblur="validate(5)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Parent Email<span class="text-danger"> *</span></label> <input type="email" id="email2" name="email2" placeholder="Enter Parent Email" onblur="validate(6)"> </div>
+                        </div>
+
+
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Hometown(City)<span class="text-danger"> *</span></label> <input type="text" id="hometown" name="hometown" placeholder="Enter Hometown(City)" onblur="validate(5)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">State<span class="text-danger"> *</span></label> <input type="text" id="state" name="state" placeholder="Enter State" onblur="validate(6)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Caste<span class="text-danger"> *</span></label> <input type="text" id="caste" name="caste" placeholder="Enter Caste" onblur="validate(7)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nationality<span class="text-danger"> *</span></label> <input type="text" id="nation" name="nation" placeholder="Enter Nationality" onblur="validate(8)"> </div>
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Aadhar Number<span class="text-danger"> *</span></label> <input type="number" id="aadhar" name="aadhar" placeholder="Enter Student Aadhar Number " onblur="validate(9)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student PAN Number<span class="text-danger"> *</span></label> <input type="text" id="pan" name="pan" placeholder="Enter Student PAN Number" onblur="validate(10)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Blood Group<span class="text-danger"> *</span></label> <input type="text" id="blood" name="blood" placeholder="Enter Student Blood Group" onblur="validate(11)"> </div>
+                            
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Allergies(if any)</label> <input type="text" id="allergy" name="allergy" placeholder="Enter Allergies(if any)" onblur="validate(12)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Name of the Guardian<span class="text-danger"> *</span></label> <input type="text" id="guard" name="guard" placeholder="Enter Name of the Guardian" onblur="validate(13)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Address of the Guardian<span class="text-danger"> *</span></label> <input type="text" id="gaddress" name="gaddress" placeholder="Enter Address of the Guardian" onblur="validate(14)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone Number of the Guardian<span class="text-danger"> *</span></label> <input type="number" id="gnumber" name="gnumber" placeholder="Enter Phone Number of the Guardian" onblur="validate(15)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Relation of the Guardian with Student<span class="text-danger"> *</span></label> <input type="text" id="rel" name="rel" placeholder="Enter relation of the Guardian with Student" onblur="validate(16)"> </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Photo<span class="text-danger"> *</span></label>
+
+                                <!-- <form action="/action_page.php"> -->
+                                    <input type="file" id="sphoto" name="sphoto">
+                                    <!-- </form>--> </div> 
+
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Aadhar Card Photo<span class="text-danger"> *</span></label>
+                                <!-- <form action="/action_page.php"> -->
+                                    <input type="file" id="aphoto" name="aphoto">
+                                    <!-- </form>--> </div> 
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Vaccination certificate<span class="text-danger"> *</span></label>
+                                <!-- <form action="/action_page.php"> -->
+                                    <input type="file" id="svaccine" name="svaccine">
+                                    <!-- </form>--> </div> 
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Student Nationality Certificate<span class="text-danger"> *</span></label>
+                                <!-- <form action="/action_page.php"> -->
+                                    <input type="file" id="certi" name="certi">
+                                    <!-- </form> --></div> 
+
+
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Submit</button> </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
